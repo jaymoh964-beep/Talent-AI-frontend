@@ -1133,8 +1133,8 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
 // ═══════════════════════════════════════════════════════════════
 //  TalentAI Frontend — fully connected to backend REST API
 //  Backend: https://talent-ai-backend.onrender.com/api
-//  Email:   real sends via /api/emails/* (preview in console if
-//           EMAIL_* not configured in .env)
+//  Email:   real sends via Resend /api/emails/* (preview in console if
+//           RESEND_API_KEY is not configured in .env)
 // ═══════════════════════════════════════════════════════════════
 
 const RAW_API_BASE = 'https://talent-ai-backend.onrender.com';
@@ -1796,7 +1796,7 @@ async function emailAction(type, candidateId) {
     if (type === 'reject')  { endpoint = '/emails/rejection';        payload = { candidate_id: candidateId }; }
     const d = await api('POST', endpoint, payload);
     const msg = d.preview
-      ? `📧 Email previewed in server console (add Gmail creds to .env to send for real)`
+      ? `📧 Email previewed in server console (add RESEND_API_KEY to .env to send for real)`
       : `📧 Email sent to ${d.to}!`;
     if (resultEl) resultEl.innerHTML = `<div style="font-size:0.8rem;color:var(--green);background:var(--green-pale);padding:8px 12px;border-radius:8px;margin-top:4px">${msg}</div>`;
     toast(msg, 'success');
@@ -1841,7 +1841,7 @@ async function sendDirectInvite() {
     // POST to a convenience endpoint on the server
     const d = await api('POST', '/emails/direct-invite', payload);
     const msg = d.preview
-      ? `📧 Previewed in server console (configure EMAIL_* in .env to send for real)`
+      ? `📧 Previewed in server console (add RESEND_API_KEY to .env to send for real)`
       : `📧 Invite sent to ${email}!`;
     if (status) status.innerHTML = `<div style="color:var(--green);background:var(--green-pale);padding:8px 12px;border-radius:8px;font-size:0.82rem">${msg}</div>`;
     toast(msg, 'success');

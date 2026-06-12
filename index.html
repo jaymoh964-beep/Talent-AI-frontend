@@ -1127,12 +1127,12 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
 
 // ═══════════════════════════════════════════════════════════════
 //  TalentAI Frontend — fully connected to backend REST API
-//  Backend: http://localhost:5000
+//  Backend: https://talent-ai-backend.onrender.com/api
 //  Email:   real sends via /api/emails/* (preview in console if
 //           EMAIL_* not configured in .env)
 // ═══════════════════════════════════════════════════════════════
 
-const API_BASE = 'https://talent-ai-backend.onrender.com';
+const API_BASE = 'https://talent-ai-backend.onrender.com/api';
 let token       = localStorage.getItem('tai_token') || null;
 let currentUser = JSON.parse(localStorage.getItem('tai_user') || 'null');
 
